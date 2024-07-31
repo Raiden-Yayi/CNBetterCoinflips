@@ -1,7 +1,6 @@
 # BetterCoinflips
-<a href="https://github.com/Mikihero/BetterCoinflips/releases"><img src="https://img.shields.io/github/downloads/Mikihero/BetterCoinflips/total?label=Downloads" alt="Downloads"></a>  
   
-SCP:SL plugin that adds a Risk-Reward mechanic to the in-game coin. Whenever you flip a coin a 'random' effect will happen depending on the coinflips outcome.
+SCP：SL插件，为游戏内硬币添加风险奖励机制。每当您抛硬币时，都会发生“随机”效应，具体取决于抛硬币的结果。
 
 # Features:
 

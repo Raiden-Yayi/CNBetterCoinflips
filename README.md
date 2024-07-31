@@ -2,166 +2,54 @@
   
 SCP：SL插件，为游戏内硬币添加风险奖励机制。每当您抛硬币时，都会发生“随机”效应，具体取决于抛硬币的结果。
 
-# Features:
+特征：
+每当玩家掷硬币并落在头上时，都会发生以下情况之一：
+他们将收到一张收容工程师/设施经理钥匙卡。
+他们将收到一个由医疗包和止痛药组成的“医疗包”。
+他们将被传送到逃生区的门。
+他们将被 25 点生命值治愈。
+他们的生命值将增加10%。
+他们会得到一个SCP-268。
+他们将在 5 秒内随机获得良好的效果。
+他们将获得一个带有 1 发弹药的逻辑师。
+他们将收到一个SCP-2176。
+他们将收到一颗粉红色的糖果。
+他们将收到一把带有最差附件的左轮手枪。
+他们将得到一个空的微隐藏。
+其比例将设置为 1.3/0.5/1.3。
+他们将收到一个随机物品。
 
-- Whenever a player flips a coin and it lands on heads one of the following will happen:  
- 1. They will receive a Containment Engineer/Facility Manager keycard.  
- 2. They will recevive a 'medical kit' consisting of a medkit and painkillers.
- 3. They will be teleported to the escape zone doors.  
- 4. They will be healed by 25 health.
- 5. Their hp will be increased by 10%.
- 6. They will get an SCP-268.
- 7. They will receive a random good effect for 5 seconds.
- 8. They will get a Logicer with 1 ammo.  
- 9. They will receive an SCP-2176. 
- 10. They will receive a pink candy. 
- 11. They will receive a revolver with the worst attachments possible. 
- 12. They will get an empty micro hid.
- 13. MTF/CI will respawn immediatly.
- 14. Their scale will be set to 1.3/0.5/1.3.
- 15. They will receive a random item.
+每当有人抛硬币并落在硬币反面时，就会发生以下情况之一：
+他们的生命值将减少30%。
+他们将被传送到D类牢房。
+他们将在 5 秒内随机产生不良效果。
+地图上的所有灯光将关闭 10 秒钟。
+一枚实弹手榴弹将出现在他们的头上。
+一枚实弹闪光手榴弹将在他们的头上生成。
+如果有活着的人，他们将被传送到SCP上，否则他们将失去15点生命值。
+他们将失去除 1 马力之外的所有生命值。
+玩家将收到一个已启动的SCP-244。
+他们拉屎了。
+他们的库存将被重置。
+他们的角色将更改为相反的角色（d 类 - 科学家、MTF - CI 等）
+一枚立即爆炸的手榴弹将落在他们的头上。
+他们将与其他玩家交换位置。
+他们会被踢。
+他们将被随机观众取代。
+他们将被传送到一个随机的特斯拉上。
+他们的库存将与其他玩家的库存交换。
+他们将被传送到一个随机的房间。
+他们将被戴上手铐并丢失他们的物品。
+该插件将阻止在地图周围生成指定数量的硬币。
+该插件将用SCP基座中的一枚硬币替换指定数量的选定物品（默认为SCP-500）。
+该插件将为每个投掷的硬币分配随机数量的使用。这个数量可以用命令读取或设置。如果一枚硬币用完了，它就会破裂。
 
-- Whenever someone flips a coin and it lands on tails one of the following will happen:  
- 1. Their hp will be reduced by 30%.  
- 2. They will be teleported to Class D cells.  
- 3. They will get a random bad effect for 5 seconds.  
- 4. The Alpha Warhead will be enabled or disabled depending on it's current state.  
- 5. Lights all across the map will be turned off for 10 seconds.  
- 6. A live grenade will appear on their head.
- 7. A live flash grenade will spawn on their head.
- 8. They will be teleported to an SCP if there are any alive, otherwise they'll lose 15 hp.
- 9. They will lose all but 1 hp.
- 10. Thye will receive a primed SCP-244.
- 11. They receive an SCP-173 tantrum.
- 12. A fake CASSIE is sent saying that SCP-173 was killed by a Tesla gate.
- 13. They will be forceclassed to a random SCP.
- 14. Their inventory will be reset.
- 15. Their role will be changed to the opposite one (class d - scientist, mtf - ci etc.)
- 16. An instantly exploding grenade will spawn on their head.
- 17. They will swap places with another player.
- 18. They will be kicked.
- 19. They will be replaced by a random spectator.
- 20. They will be teleported to a random tesla.
- 21. Their inventory will be swapped with another player's inventory.
- 22. They will be teleported to a random room.
- 23. They will be handcuffed and lose their items.
+命令
+GetSerial - 获取您或其他玩家持有的物品的序列号。
+CoinUses - 获取或设置特定硬币的使用次数。用法示例：、、coinuses get player 5coin uses set player 4coinuses set serial 10
 
-- The plugin will prevent the spawns of a specified amount of coins around the map.
-- The plugin will replace a specified amount of the chosen item (by default SCP-500) with a coin in the SCP pedestals.
-- The plugin will assign a random amount of uses to every thrown coin. This amount can be read or set with a command. If a coin runs out of uses it breaks.
+权限
+bc.coinuses.set - 授予对 CoinUses Set 命令的访问权限
+bc.coinuses.get - 授予对 CoinUses Get 命令的访问权限
 
-# Commands
-
-- GetSerial - gets the serial number of an item held by you or another player.
-- CoinUses - gets or sets the number of uses a specific coin has. Example usage: `coinuses get player 5`, `coin uses set player 4`, `coinuses set serial 10` 
-
-# Permissions
-
-- bc.coinuses.set - grants access to the CoinUses Set command
-- bc.coinuses.get - grants access to the CoinUses Get command
-
-# Default config
-
-```yaml
-better_cf:
-  # Whether or not the plugin should be enabled. Default: true
-  is_enabled: true
-  # Whether or not debug logs should be shown. Default: false
-  debug: false
-  # The amount of base game spawned coins that should be removed. Default: 4
-  default_coins_amount: 4
-  # The ItemType of the item to be replaced with a coin and the amount to be replaced, the item is supposed to be something found in SCP pedestals.
-  item_to_replace:
-    SCP500: 2
-  # The boundaries of the random range of throws each coin will have before it breaks. The upper bound is exclusive.
-  min_max_default_coins:
-  - 1
-  - 4
-  # Time in seconds between coin toses.
-  coin_cooldown: 5
-  # The duration of the broadcast informing you about your 'reward'. Default: 3
-  broadcast_time: 3
-  # The duration of the map blackout. Default: 10
-  map_blackout_time: 10
-  # The fuse time of the grenade falling on your head. Default: 3.25
-  live_grenade_fuse_time: 3.25
-  # List of bad effects that can be applied to the players. List available at: https://exiled-team.github.io/EXILED/api/Exiled.API.Enums.EffectType.html
-  bad_effects:
-  - Asphyxiated
-  - Bleeding
-  - Blinded
-  - Burned
-  - Concussed
-  - Corroding
-  - CardiacArrest
-  - Deafened
-  - Decontaminating
-  - Disabled
-  - Ensnared
-  - Exhausted
-  - Flashed
-  - Hemorrhage
-  - Hypothermia
-  - InsufficientLighting
-  - Poisoned
-  - PocketCorroding
-  - SeveredHands
-  - SinkHole
-  - Stained
-  - Traumatized
-  # List of good effects that can be applied to the players. List available at: https://exiled-team.github.io/EXILED/api/Exiled.API.Enums.EffectType.html
-  good_effects:
-  - BodyshotReduction
-  - DamageReduction
-  - Invigorated
-  - Invisible
-  - MovementBoost
-  - RainbowTaste
-  - Scp1853
-  - Scp207
-  - Vitality
-  # The % chance of receiving a Facility Manager keycard instead of a Containment Engineer one.
-  red_card_chance: 15
-  # The kick reason.
-  kick_reason: 'The coin kicked your ass.'
-  # The chance of these good effects happening. It's a proportional chance not a % chance.
-  keycard_chance: 20
-  medical_kit_chance: 35
-  tp_to_escape_chance: 5
-  heal_chance: 10
-  more_hp_chance: 10
-  hat_chance: 10
-  random_good_effect_chance: 30
-  one_ammo_logicer_chance: 1
-  lightbulb_chance: 15
-  pink_candy_chance: 10
-  bad_revo_chance: 5
-  empty_hid_chance: 5
-  force_respawn_chance: 15
-  size_change_chance: 20
-  # The chance of these bad effects happening. It's a proportional chance not a % chance.
-  hp_reduction_chance: 20
-  tp_to_class_d_cells_chance: 5
-  random_bad_effect_chance: 20
-  warhead_chance: 10
-  lights_out_chance: 20
-  live_he_chance: 30
-  troll_gun_chance: 50
-  troll_flash_chance: 50
-  scp_tp_chance: 20
-  one_hp_left_chance: 15
-  primed_vase_chance: 20
-  shit_pants_chance: 40
-  fake_cassie_chance: 50
-  turn_into_scp_chance: 30
-  inventory_reset_chance: 20
-  class_swap_chance: 10
-  instant_explosion_chance: 10
-  player_swap_chance: 20
-  kick_chance: 5
-  spect_swap_chance: 10
-  tesla_tp_chance: 15
-  inventory_swap_chance: 20
-  handcuff_chance: 10
-  random_teleport_chance: 15
-```
+该插件由BetterCoinflips改编而来。

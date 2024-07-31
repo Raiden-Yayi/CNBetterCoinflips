@@ -10,7 +10,7 @@ namespace BetterCoinflips.Commands.CoinUses.Set
         
         public override string Command { get; } = "set";
         public override string[] Aliases { get; } = { };
-        public override string Description { get; } = "Sets the amount of uses of a coin held by the specified player or by serial.";
+        public override string Description { get; } = "设置指定玩家或序列号持有的硬币使用次数。";
         
         public override void LoadGeneratedCommands()
         {
@@ -22,11 +22,11 @@ namespace BetterCoinflips.Commands.CoinUses.Set
         {
             if (!((CommandSender)sender).CheckPermission("bc.coinuses.set"))
             {
-                response = "You do not have permission to use this command";
+                response = "您没有使用此命令的权限";
                 return false;
             }
             
-            response = "Invalid subcommand. Available ones: player, serial";
+            response = "无效的子命令。可用的子命令：player, serial";
             return false;
         }
     }

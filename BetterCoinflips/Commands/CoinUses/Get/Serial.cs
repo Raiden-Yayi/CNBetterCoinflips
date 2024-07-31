@@ -9,35 +9,35 @@ namespace BetterCoinflips.Commands.CoinUses.Get
     {
         public string Command { get; } = "serial";
         public string[] Aliases { get; } = { };
-        public string Description { get; } = "Gets the uses of a coin specified via serial number.";
-        
+        public string Description { get; } = "获取指定序列号的硬币使用次数。";
+
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
             if (!((CommandSender)sender).CheckPermission("bc.coinuses.get"))
             {
-                response = "You do not have permission to use this command";
+                response = "您没有权限使用此命令";
                 return false;
             }
-            
+
             if (arguments.Count != 1)
             {
-                response = "Usage: coinuses get serial [serial]";
+                response = "用法: coinuses get serial [serial]";
                 return false;
             }
             bool flag1 = ushort.TryParse(arguments.ElementAt(0), out ushort serial);
             if (!flag1)
             {
-                response = $"Couldn't parse {arguments.ElementAt(0)} as serial.";
+                response = $"无法将 {arguments.ElementAt(0)} 解析为序列号。";
                 return false;
             }
 
             if (!EventHandlers.CoinUses.ContainsKey(serial))
             {
-                response = $"Couldn't find a registered coin with the serial {serial}.";
+                response = $"找不到序列号为 {serial} 的已注册硬币。";
                 return false;
             }
 
-            response = $"Coin with the serial number {serial} has {EventHandlers.CoinUses[serial]} uses left.";
+            response = $"序列号为 {serial} 的硬币还有 {EventHandlers.CoinUses[serial]} 次使用次数。";
             return true;
         }
     }

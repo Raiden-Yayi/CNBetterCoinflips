@@ -8,44 +8,44 @@ namespace BetterCoinflips.Configs
 {
     public class Config : IConfig
     {
-        [Description("Whether or not the plugin should be enabled. Default: true")]
+        [Description("插件是否应启用。默认：true")]
         public bool IsEnabled { get; set; } = true;
 
-        [Description("Whether or not debug logs should be shown. Default: false")]
+        [Description("是否应显示调试日志。默认：false")]
         public bool Debug { get; set; } = false;
 
-        [Description("The amount of base game spawned coins that should be removed. Default: 4")]
+        [Description("应移除的基础游戏生成的硬币数量。默认：4")]
         public int DefaultCoinsAmount { get; set; } = 4;
 
-        [Description("The ItemType of the item to be replaced with a coin and the amount to be replaced, the item is supposed to be something found in SCP pedestals.")]
+        [Description("要替换为硬币的物品的ItemType及其替换数量，该物品应为SCP底座中找到的物品。")]
         public Dictionary<ItemType, int> ItemToReplace { get; set; } = new()
         {
             { ItemType.SCP500, 2 }
         };
 
-        [Description("The boundaries of the random range of throws each coin will have before it breaks. The upper bound is exclusive.")]
+        [Description("每个硬币在破裂前抛掷次数的随机范围边界。上限是独占的。")]
         public List<int> MinMaxDefaultCoins { get; set; } = new()
         {
-            1, 
+            1,
             4
         };
 
-        [Description("Time in seconds between coin toses.")]
+        [Description("硬币抛掷之间的时间（秒）。")]
         public double CoinCooldown { get; set; } = 5;
 
-        [Description("The duration of the broadcast informing you about your 'reward'. Default: 3")]
+        [Description("通知您有关'奖励'的广播持续时间。默认：3")]
         public ushort BroadcastTime { get; set; } = 3;
-        
-        [Description("The duration of the hint telling you if you got heads or tails. Set to 0 or less to disable.")]
+
+        [Description("提示您是正面还是反面的持续时间。设置为0或更少以禁用。")]
         public float HintDuration { get; set; } = 3;
 
-        [Description("The duration of the map blackout. Default: 10")]
+        [Description("地图黑屏持续时间。默认：10")]
         public float MapBlackoutTime { get; set; } = 10;
 
-        [Description("The fuse time of the grenade falling on your head. Default: 3.25")]
+        [Description("掉在您头上的手榴弹的引信时间。默认：3.25")]
         public double LiveGrenadeFuseTime { get; set; } = 3.25;
 
-        [Description("List of bad effects that can be applied to the players. List available at: https://exiled-team.github.io/EXILED/api/Exiled.API.Enums.EffectType.html")]
+        [Description("可以应用于玩家的负面效果列表。列表可在以下网址获取：https://exiled-team.github.io/EXILED/api/Exiled.API.Enums.EffectType.html")]
         public HashSet<EffectType> BadEffects { get; set; } = new()
         {
             EffectType.Asphyxiated,
@@ -71,8 +71,8 @@ namespace BetterCoinflips.Configs
             EffectType.Stained,
             EffectType.Traumatized
         };
-        
-        [Description("List of good effects that can be applied to the players. List available at: https://exiled-team.github.io/EXILED/api/Exiled.API.Enums.EffectType.html")]
+
+        [Description("可以应用于玩家的正面效果列表。列表可在以下网址获取：https://exiled-team.github.io/EXILED/api/Exiled.API.Enums.EffectType.html")]
         public HashSet<EffectType> GoodEffects { get; set; } = new()
         {
             EffectType.BodyshotReduction,
@@ -86,24 +86,10 @@ namespace BetterCoinflips.Configs
             EffectType.Vitality
         };
 
-        [Description("The % chance of receiving a Facility Manager keycard instead of a Containment Engineer one.")]
+        [Description("收到设施经理钥匙卡而不是收容工程师钥匙卡的百分比几率。")]
         public int RedCardChance { get; set; } = 15;
 
-        [Description("The kick reason.")] 
-        public string KickReason { get; set; } = "The coin kicked your ass.";
-
-        [Description("The list of SCP's that you can turn into by using the coin.")]
-        public HashSet<RoleTypeId> ValidScps { get; set; } = new()
-        {
-            RoleTypeId.Scp049,
-            RoleTypeId.Scp096,
-            RoleTypeId.Scp106,
-            RoleTypeId.Scp173,
-            RoleTypeId.Scp0492,
-            RoleTypeId.Scp939,
-        };
-
-        [Description("List of ignored roles for the PlayerSwap effect (#17)")]
+        [Description("PlayerSwap效果（#17）忽略的角色列表")]
         public HashSet<RoleTypeId> PlayerSwapIgnoredRoles { get; set; } = new()
         {
             RoleTypeId.Spectator,
@@ -113,7 +99,7 @@ namespace BetterCoinflips.Configs
             RoleTypeId.Tutorial,
         };
 
-        [Description("List of ignored roles for the InventorySwap effect (#17)")]
+        [Description("InventorySwap效果（#17）忽略的角色列表")]
         public HashSet<RoleTypeId> InventorySwapIgnoredRoles { get; set; } = new()
         {
             RoleTypeId.Spectator,
@@ -130,7 +116,7 @@ namespace BetterCoinflips.Configs
             RoleTypeId.Scp939,
             RoleTypeId.Scp3114,
         };
-        
+
         public HashSet<ItemType> ItemsToGive { get; set; } = new()
         {
             ItemType.Adrenaline,
@@ -214,7 +200,7 @@ namespace BetterCoinflips.Configs
             RoomType.Surface,
         };
 
-        [Description("The chance of these good effects happening. It's a proportional chance not a % chance.")]
+        [Description("这些正面效果发生的几率。这是一个比例几率，不是百分比几率。")]
         public int KeycardChance { get; set; } = 20;
         public int MedicalKitChance { get; set; } = 35;
         public int TpToEscapeChance { get; set; } = 5;
@@ -231,7 +217,7 @@ namespace BetterCoinflips.Configs
         public int SizeChangeChance { get; set; } = 20;
         public int RandomItemChance { get; set; } = 35;
 
-        [Description("The chance of these bad effects happening. It's a proportional chance not a % chance.")]
+        [Description("这些负面效果发生的几率。这是一个比例几率，不是百分比几率。")]
         public int HpReductionChance { get; set; } = 20;
         public int TpToClassDCellsChance { get; set; } = 5;
         public int RandomBadEffectChance { get; set; } = 20;
@@ -249,7 +235,6 @@ namespace BetterCoinflips.Configs
         public int ClassSwapChance { get; set; } = 10;
         public int InstantExplosionChance { get; set; } = 10;
         public int PlayerSwapChance { get; set; } = 20;
-        public int KickChance { get; set; } = 5;
         public int SpectSwapChance { get; set; } = 10;
         public int TeslaTpChance { get; set; } = 15;
         public int InventorySwapChance { get; set; } = 20;
@@ -257,3 +242,4 @@ namespace BetterCoinflips.Configs
         public int RandomTeleportChance { get; set; } = 15;
     }
 }
+

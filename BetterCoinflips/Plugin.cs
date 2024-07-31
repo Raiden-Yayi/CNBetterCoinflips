@@ -10,8 +10,8 @@ namespace BetterCoinflips
     {
         public override Version RequiredExiledVersion => new(8, 7, 0, 0);
         public override Version Version => new(4, 5, 0);
-        public override string Author => "Miki_hero";
-        public override string Name => "BetterCoinflips";
+        public override string Author => "雷电芽衣（原Miki_hero）";
+        public override string Name => "CNBetterCoinflips";
 
         public static Plugin Instance;
         private EventHandlers _eventHandler;

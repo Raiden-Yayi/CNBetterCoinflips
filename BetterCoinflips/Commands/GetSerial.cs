@@ -12,14 +12,14 @@ namespace BetterCoinflips.Commands
     {
         public string Command { get; } = "getserial";
         public string[] Aliases { get; } = { };
-        public string Description { get; } = "Gets the serial number of an item.";
-        public string[] Usage { get; } = { "id/name (Optional)"};
-        
+        public string Description { get; } = "获取物品的序列号。";
+        public string[] Usage { get; } = { "id/name (可选)" };
+
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
             if (!((CommandSender)sender).CheckPermission("bc.getserial"))
             {
-                response = "You do not have permission to use this command";
+                response = "您没有使用此命令的权限";
                 return false;
             }
             if (arguments.Count == 0)
@@ -27,11 +27,11 @@ namespace BetterCoinflips.Commands
                 Item item = Player.Get(sender).CurrentItem;
                 if (item == null)
                 {
-                    response = "You're not holding any items.";
+                    response = "您没有持有任何物品。";
                     return false;
                 }
 
-                response = $"Item: {item.Base.name}, Serial: {item.Serial}";
+                response = $"物品: {item.Base.name}, 序列号: {item.Serial}";
                 return true;
             }
 
@@ -40,22 +40,22 @@ namespace BetterCoinflips.Commands
                 Player player = Player.Get(arguments.ElementAt(0));
                 if (player == null)
                 {
-                    response = $"Player {arguments.ElementAt(0)} not found.";
+                    response = $"未找到玩家 {arguments.ElementAt(0)}。";
                     return false;
                 }
 
                 Item item = player.CurrentItem;
                 if (item == null)
                 {
-                    response = "The specified player is not holding any items.";
+                    response = "指定的玩家没有持有任何物品。";
                     return false;
                 }
 
-                response = $"Item: {item.Base.name}, Serial: {item.Serial}";
+                response = $"物品: {item.Base.name}, 序列号: {item.Serial}";
                 return true;
             }
 
-            response = "Incorrect usage.";
+            response = "使用方法不正确。";
             return false;
         }
     }

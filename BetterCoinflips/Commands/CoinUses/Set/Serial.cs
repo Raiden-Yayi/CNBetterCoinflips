@@ -10,47 +10,47 @@ namespace BetterCoinflips.Commands.CoinUses.Set
     {
         public string Command { get; } = "serial";
         public string[] Aliases { get; } = { };
-        public string Description { get; } = "Sets the uses of a coin specified by its serial number.";
+        public string Description { get; } = "根据序列号设置硬币的使用次数。";
         
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
             Exiled.API.Features.Player player = Exiled.API.Features.Player.Get(sender);
             if (!player.CheckPermission("bc.coinuses.set"))
             {
-                response = "You do not have permission to use this command";
+                response = "您没有使用此命令的权限";
                 return false;
             }
             
             if (arguments.Count != 2)
             {
-                response = "Usage: coinuses set serial [serial] [amount]";
+                response = "用法: coinuses set serial [serial] [amount]";
                 return false;
             }
 
             bool flag1 = ushort.TryParse(arguments.ElementAt(0), out ushort serial);
             if (!flag1)
             {
-                response = $"Couldn't parse {arguments.ElementAt(0)} as serial.";
+                response = $"无法将 {arguments.ElementAt(0)} 解析为序列号。";
                 return false;
             }
 
             if (!EventHandlers.CoinUses.ContainsKey(serial))
             {
-                response = $"Couldn't find a coin with the serial {serial}.";
+                response = $"找不到序列号为 {serial} 的硬币。";
                 return false;
             }
 
             bool flag2 = int.TryParse(arguments.ElementAt(1), out int amount);
             if (!flag2)
             {
-                response = $"Couldn't parse {arguments.ElementAt(1)} as amount.";
+                response = $"无法将 {arguments.ElementAt(1)} 解析为数量。";
                 return false;
             }
 
             EventHandlers.CoinUses[serial] = amount;
             string message = player.DoNotTrack ? $"{player.Nickname}({player.RawUserId})" : $"{player.Nickname}";
-            Log.Debug($"{message} just set the uses of the coin # {serial}, to {amount}.");
-            response = $"Successfully set the coins uses to {amount}.";
+            Log.Debug($"{message} 刚刚将序列号为 {serial} 的硬币使用次数设置为 {amount}。");
+            response = $"成功将硬币的使用次数设置为 {amount}。";
             return true;
         }
     }

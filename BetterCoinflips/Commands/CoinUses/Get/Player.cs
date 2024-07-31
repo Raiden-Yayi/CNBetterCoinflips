@@ -9,32 +9,32 @@ namespace BetterCoinflips.Commands.CoinUses.Get
     {
         public string Command { get; } = "player";
         public string[] Aliases { get; } = { };
-        public string Description { get; } = "Gets the uses of a coin held by the specified player.";
-        
+        public string Description { get; } = "获取指定玩家持有的硬币的使用次数。";
+
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
             if (!((CommandSender)sender).CheckPermission("bc.coinuses.get"))
             {
-                response = "You do not have permission to use this command";
+                response = "您没有使用此命令的权限";
                 return false;
             }
-            
+
             if (arguments.Count == 0)
             {
                 Exiled.API.Features.Player player = Exiled.API.Features.Player.Get(sender);
                 if (player.CurrentItem == null || player.CurrentItem.Type != ItemType.Coin)
                 {
-                    response = "You are not holding a coin right now.";
+                    response = "您现在没有持有硬币。";
                     return false;
                 }
-                
+
                 if (!EventHandlers.CoinUses.ContainsKey(player.CurrentItem.Serial))
                 {
-                    response = $"Your held coin isn't registered because it wasn't used yet.";
+                    response = $"您持有的硬币尚未注册，因为它还没有被使用过。";
                     return false;
                 }
-                
-                response = $"Your held coin has {EventHandlers.CoinUses[player.CurrentItem.Serial]} uses left.";
+
+                response = $"您持有的硬币还有 {EventHandlers.CoinUses[player.CurrentItem.Serial]} 次使用次数。";
                 return true;
             }
 
@@ -43,26 +43,26 @@ namespace BetterCoinflips.Commands.CoinUses.Get
                 Exiled.API.Features.Player player = Exiled.API.Features.Player.Get(arguments.ElementAt(0));
                 if (player == null)
                 {
-                    response = $"Couldn't parse {arguments.ElementAt(0)} as a valid target.";
+                    response = $"无法将 {arguments.ElementAt(0)} 解析为有效的目标。";
                     return false;
                 }
                 if (player.CurrentItem == null || player.CurrentItem.Type != ItemType.Coin)
                 {
-                    response = $"{player.Nickname} is not holding a coin right now.";
+                    response = $"{player.Nickname} 现在没有持有硬币。";
                     return false;
                 }
 
                 if (!EventHandlers.CoinUses.ContainsKey(player.CurrentItem.Serial))
                 {
-                    response = $"{player.Nickname}'s held coin isn't registered because it wasn't used yet.";
+                    response = $"{player.Nickname} 持有的硬币尚未注册，因为它还没有被使用过。";
                     return false;
                 }
-                
-                response = $"{player.Nickname}'s held coin has {EventHandlers.CoinUses[player.CurrentItem.Serial]} uses left.";
+
+                response = $"{player.Nickname} 持有的硬币还有 {EventHandlers.CoinUses[player.CurrentItem.Serial]} 次使用次数。";
                 return true;
             }
-            
-            response = "Usage: coinuses get player [id/name]";
+
+            response = "用法: coinuses get player [id/name]";
             return false;
         }
     }
